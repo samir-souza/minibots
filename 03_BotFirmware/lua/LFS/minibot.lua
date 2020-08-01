@@ -10,6 +10,7 @@ function MiniBot:init(config)
     self.server_user = config.server_user
     self.server_pwd = config.server_pwd
     self.crypto_key = config.crypto_key
+    self.bot_id = config.bot_id
 
     self.mpu_config = {
         scl_pin = 5,
@@ -202,7 +203,7 @@ function MiniBot:on_receive(sck, data, port, ip)
 
     if t[1] == "r" then -- server asked for login
         --self.server_host = ip
-        self:send_message( "l;"..self.server_user..";"..self.server_pwd)
+        self:send_message( "l;"..self.server_user..";"..self.server_pwd..";"..self.bot_id)
         
     elseif t[1] == "o" then -- server start message
         self.servo_left.freq = tonumber(t[4])
@@ -323,7 +324,7 @@ function MiniBot:main(t)
 
             if self.server_ip ~= nil then
                 print( "Pinging server...")
-                self:send_message( "i;"..ip..";"..self.client_port)
+                self:send_message( "i;"..ip..";"..self.client_port..";"..self.bot_id)
             end
         end
     end)
