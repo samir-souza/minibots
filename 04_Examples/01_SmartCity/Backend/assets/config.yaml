@@ -1,0 +1,150 @@
+# default
+fps: 40
+width: 640
+height: 480
+camid: 0
+preview: false
+
+# map
+pathNodeRadius: 10.0
+previewWindowWidth: 800
+previewWindowHeight: 600
+
+# trackBuilder
+xFactor: 38.5
+yFactor: 37.5
+
+# from the track center, in cm
+cameraHeight: 120.0
+
+
+# bot height, from the floor to the apriltag center, in pixels
+#botHeight: 25 # raspcam=10, fisheye=30, simulator=0
+botHeight: 0
+
+## FishEye undistort
+undistort: false
+camDist: 586.1776166434878 0.0 326.0709288932344 0.0 585.9165016589901 258.0479123503988 0.0 0.0 1.0
+camMtx: -0.008732181586134057 -0.4601147073922342 2.0078891354651125 -3.150524442997102
+
+obstacleHeight: 0 # camera=5, simulator=0
+
+missingObjectTimeout: 3
+
+seekResendTimeout: 2
+
+blockedEdgeByBotTimeout: 5
+
+placeManualTargetRadius: 60
+
+agentObstacleDetectionRadius: 60
+
+manualTargets:
+    - id: 40
+      name: ManualTarget1
+    - id: 41
+      name: ManualTarget2
+
+trafficLight:
+    - id: 0
+      forward: 17 16 15 10
+      right: 18 5 0
+    - id: 1 
+      forward: 12 4 5 0
+      right: 11 15 10
+    - id: 2
+      forward: 14 1 2 3
+      right: 13 6 19
+    - id: 3
+      forward: 8 7 6 19
+      right: 9 1 14
+
+bots:
+    - id: 1000
+      name: TrafficLight
+
+    - id: 0
+      name: Destroyer
+
+    - id: 1
+      name: Pimple
+
+    - id: 2
+      name: Rash
+
+    - id: 3
+      name: Codorna
+
+    - id: 4
+      name: Blaster
+
+    - id: 5
+      name: Cruzeiro
+
+    - id: 6
+      name: Black#1
+
+    - id: 7
+      name: Mario
+
+    - id: 8
+      name: Aroldo
+
+    - id: 9
+      name: Luigi
+
+    - id: 10
+      name: Bolt
+
+    - id: 11
+      name: Brazil
+
+    - id: 12
+      name: Black#2
+
+    - id: 13
+      name: Casper
+
+    - id: 14
+      name: Tazmania
+
+places:
+    - id: 20
+      name: School
+    - id: 21
+      name: Jeff's House
+    - id: 22
+      name: Andy's House
+    - id: 23
+      name: Hospital
+    - id: 24
+      name: Office
+    - id: 25
+      name: Amazon
+    - id: 26
+      name: AWS
+    - id: 27
+      name: Bus stop
+    - id: 28
+      name: Shopping
+    - id: 29
+      name: Amazon Videos
+    - id: 30
+      name: Amazon Music
+    - id: 31
+      name: Tower
+
+obstacles:
+    - id: 35
+      name: Robot
+    - id: 36
+      name: Mummy
+    - id: 37
+      name: John
+    - id: 38
+      name: Bob
+
+trackBuilderAngleThreshold: 15
+
+# Analytics
+recordsBufferSize: 50

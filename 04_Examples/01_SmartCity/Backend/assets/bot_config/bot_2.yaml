@@ -1,0 +1,14 @@
+mpuInit: 0
+leftFreq: 60
+leftPeriod: 1000
+leftStopped: 91
+leftForward: 92
+leftBackward: 90
+rightFreq: 30
+rightPeriod: 2000
+rightStopped: 90
+rightForward: 89
+rightBackward: 91
+speed1: 0
+speed2: 0
+speed3: 0

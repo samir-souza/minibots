@@ -1,0 +1,17 @@
+"Id";"Designator";"Package";"Quantity";"Designation";"Supplier and ref";
+1;"D1";"LED-3MM";1;"LED";;;
+2;"P1";"Pin_Header_Straight_1x03";1;"LeftMotor";;;
+3;"P2";"Pin_Header_Straight_1x03";1;"RightMotor";;;
+4;"P4";"Pin_Header_Straight_1x01";1;"Antenna";;;
+5;"P5";"Pin_Header_Straight_1x03";1;"Serial";;;
+6;"SW1";"MiniSlideSwitch";1;"Switch";;;
+7;"U1";"MPU6050";1;"MPU6050";;;
+8;"C1,C2";"C_0805_HandSoldering";2;"10uf";;;
+9;"C3";"C_0805_HandSoldering";1;"1uf";;;
+10;"R2";"R_0805_HandSoldering";1;"100k";;;
+11;"U3";"MSOP-8_3x3mm_Pitch0.65mm";1;"MCP1253";;;
+12;"R1";"R_0805_HandSoldering";1;"100";;;
+13;"P6";"Pin_Header_Straight_1x02";1;"VCC";;;
+14;"P7";"Pin_Header_Straight_1x02";1;"Power";;;
+15;"P3";"Pin_Header_Straight_1x02";1;"Flash/Ext";;;
+16;"U2";"ESP-06";1;"ESP8266-06";;;

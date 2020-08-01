@@ -1,0 +1,131 @@
+diff --git a/app/include/user_config.h b/app/include/user_config.h
+index 4866e6a..c790d4b 100644
+--- a/app/include/user_config.h
++++ b/app/include/user_config.h
+@@ -7,8 +7,8 @@
+ // this out and enabling the explicitly size, e.g. FLASH_4M.  Valid sizes are
+ // FLASH_512K, FLASH_1M, FLASH_2M, FLASH_4M, FLASH_8M, FLASH_16M.
+ 
+-//#define FLASH_AUTOSIZE
+-#define FLASH_4M
++#define FLASH_AUTOSIZE
++//#define FLASH_4M
+ 
+ 
+ // The firmware now selects a baudrate of 115,200 by default, but the driver
+@@ -46,7 +46,7 @@
+ // LUA_FLASH_STORE defines the default partition size if the NodeMCU partition
+ // tool is not used.
+ 
+-//#define LUA_FLASH_STORE                   0x10000
++#define LUA_FLASH_STORE                   0x20000
+ 
+ // By default Lua executes the file init.lua at start up.  The following
+ // define allows you to replace this with an alternative startup.  Warning:
+@@ -96,8 +96,8 @@
+ //#define CLIENT_SSL_ENABLE
+ //#define MD2_ENABLE
+ #define SHA2_ENABLE
+-#define SSL_BUFFER_SIZE 4096
+-#define SSL_MAX_FRAGMENT_LENGTH_CODE	MBEDTLS_SSL_MAX_FRAG_LEN_4096
++#define SSL_BUFFER_SIZE 0
++//#define SSL_MAX_FRAGMENT_LENGTH_CODE	MBEDTLS_SSL_MAX_FRAG_LEN_4096
+ 
+ 
+ // GPIO_INTERRUPT_ENABLE needs to be defined if your application uses the
+diff --git a/app/include/user_modules.h b/app/include/user_modules.h
+index 0b28dbe..fd1d2b7 100644
+--- a/app/include/user_modules.h
++++ b/app/include/user_modules.h
+@@ -20,8 +20,8 @@
+ //#define LUA_USE_MODULES_COAP
+ //#define LUA_USE_MODULES_COLOR_UTILS
+ //#define LUA_USE_MODULES_CRON
+-//#define LUA_USE_MODULES_CRYPTO
+-#define LUA_USE_MODULES_DHT
++#define LUA_USE_MODULES_CRYPTO
++//#define LUA_USE_MODULES_DHT
+ //#define LUA_USE_MODULES_ENCODER
+ //#define LUA_USE_MODULES_ENDUSER_SETUP // USE_DNS in dhcpserver.h needs to be enabled for this module to work.
+ #define LUA_USE_MODULES_FILE
+@@ -36,15 +36,15 @@
+ //#define LUA_USE_MODULES_L3G4200D
+ //#define LUA_USE_MODULES_MCP4725
+ //#define LUA_USE_MODULES_MDNS
+-#define LUA_USE_MODULES_MQTT
++//#define LUA_USE_MODULES_MQTT
+ #define LUA_USE_MODULES_NET
+ #define LUA_USE_MODULES_NODE
+-#define LUA_USE_MODULES_OW
++//#define LUA_USE_MODULES_OW
+ //#define LUA_USE_MODULES_PCM
+ //#define LUA_USE_MODULES_PERF
+ //#define LUA_USE_MODULES_PIPE
+ //#define LUA_USE_MODULES_PWM
+-//#define LUA_USE_MODULES_PWM2
++#define LUA_USE_MODULES_PWM2
+ //#define LUA_USE_MODULES_RC
+ //#define LUA_USE_MODULES_RFSWITCH
+ //#define LUA_USE_MODULES_ROTARY
+diff --git a/app/include/user_version.h b/app/include/user_version.h
+index ddcd8c6..eb25b3d 100644
+--- a/app/include/user_version.h
++++ b/app/include/user_version.h
+@@ -12,7 +12,7 @@
+ #define NODE_VERSION_STR(x)	#x
+ #define NODE_VERSION_XSTR(x)	NODE_VERSION_STR(x)
+ 
+-# define NODE_VERSION		"NodeMCU " ESP_SDK_VERSION_STRING "." NODE_VERSION_XSTR(NODE_VERSION_INTERNAL) " " NODE_VERSION_LONG
++#define NODE_VERSION        "NodeMCU (SmartCars) " ESP_SDK_VERSION_STRING "." NODE_VERSION_XSTR(NODE_VERSION_INTERNAL)
+ // Leave the space after # in the line above. It busts replacement of NODE_VERSION in the docker build which is not needed anymore with this PR.
+ // Can be removed when the script is adapted
+ 
+diff --git a/app/lua/lmathlib.c b/app/lua/lmathlib.c
+index 2696765..88261cf 100644
+--- a/app/lua/lmathlib.c
++++ b/app/lua/lmathlib.c
+@@ -35,7 +35,7 @@ static int math_abs (lua_State *L) {
+ }
+ 
+ #ifndef LUA_NUMBER_INTEGRAL
+-#if 0
++#if 1
+ static int math_sin (lua_State *L) {
+   lua_pushnumber(L, sin(luaL_checknumber(L, 1)));
+   return 1;
+@@ -323,13 +323,13 @@ LROT_PUBLIC_BEGIN(math)
+   LROT_NUMENTRY( huge, INT_MAX )
+ #else
+   LROT_FUNCENTRY( abs, math_abs )
+-// LROT_FUNCENTRY( acos, math_acos )
+-// LROT_FUNCENTRY( asin, math_asin )
+-// LROT_FUNCENTRY( atan2, math_atan2 )
+-// LROT_FUNCENTRY( atan, math_atan )
++ LROT_FUNCENTRY( acos, math_acos )
++ LROT_FUNCENTRY( asin, math_asin )
++ LROT_FUNCENTRY( atan2, math_atan2 )
++ LROT_FUNCENTRY( atan, math_atan )
+   LROT_FUNCENTRY( ceil, math_ceil )
+-// LROT_FUNCENTRY( cosh, math_cosh )
+-// LROT_FUNCENTRY( cos, math_cos )
++ LROT_FUNCENTRY( cosh, math_cosh )
++ LROT_FUNCENTRY( cos, math_cos )
+ // LROT_FUNCENTRY( deg, math_deg )
+ // LROT_FUNCENTRY( exp, math_exp )
+   LROT_FUNCENTRY( floor, math_floor )
+@@ -346,11 +346,11 @@ LROT_PUBLIC_BEGIN(math)
+ // LROT_FUNCENTRY( rad, math_rad )
+   LROT_FUNCENTRY( random, math_random )
+   LROT_FUNCENTRY( randomseed, math_randomseed )
+-// LROT_FUNCENTRY( sinh, math_sinh )
+-// LROT_FUNCENTRY( sin, math_sin )
++ LROT_FUNCENTRY( sinh, math_sinh )
++ LROT_FUNCENTRY( sin, math_sin )
+   LROT_FUNCENTRY( sqrt, math_sqrt )
+-// LROT_FUNCENTRY( tanh, math_tanh )
+-// LROT_FUNCENTRY( tan, math_tan )
++ LROT_FUNCENTRY( tanh, math_tanh )
++ LROT_FUNCENTRY( tan, math_tan )
+   LROT_NUMENTRY( pi, PI )
+   LROT_NUMENTRY( huge, HUGE_VAL )
+ #endif // #ifdef LUA_NUMBER_INTEGRAL
