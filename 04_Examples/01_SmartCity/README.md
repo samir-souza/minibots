@@ -56,3 +56,15 @@ pip3 install pygame==2.0.0.dev6
 pip3 install numpy
 pip3 install opencv-python
 ```
+
+If you want to try the simulator, you need to ask the backend not to look for a webcam and instead prepare a UDP server to receive the frames from the simulator.
+```bash
+# In the backend build dir
+./minibots -p -s localhost:9991
+```
+
+Then in another terminal (tab?)
+```bash
+# In the simulator dir
+python3 main.py
+```
