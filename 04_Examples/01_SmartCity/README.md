@@ -3,6 +3,11 @@ The idea of this project is to simulate a minimalist (smart) city. People go aro
 
 So, with the use of a webcam, the city keeps "looking all the time" to the cars, pedestrians, obstacles, the streets, etc. A backend (written in C++ for performance reasons) process the video streaming from the camera and applies a set of rules to understand the current scenario and infer a better state for the city. This backend is the Smart City controller. It communicates to all the cars and the traffic lights trough UDP. All the elements share the same network.
 
+<p align="center">
+   <a href="https://spock.cloud/minibots/smartcity.mp4"><img src="https://spock.cloud/minibots/smartcity.gif"></a>
+</p>
+
+
 Each car, pedestrian, obstacle and place has an [Apriltag](https://april.eecs.umich.edu/software/apriltag). Apriltags are powerful visual markers used for experimenting with robotics and augmented reality. By processing the Apriltags, the backend identifies the position and orientation of all detected elements in the scene. These coordinates are then used to compute improvements in the routing.
 
 The city has a representation of the track as a connected graph. For the path planning, A*. Both graph and path planner algorithms were implemented in an external library called [PowerGine](https://github.com/samir-souza/powergine).
