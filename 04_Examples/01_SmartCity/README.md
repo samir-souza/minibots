@@ -17,7 +17,7 @@ For this project, a tripod with a Raspbery pi4 camera support was created. You c
 <img width="400px" src="imgs/tripod.jpg"></img>
 </p>
 
-This project was created as a Proof of concept for the Minibots and was presented at the Builders Fair at re:Invent 2019. 
+This project was created as a Proof of concept for the Minibots and was presented at the Builders Fair at re:Invent 2019. A special thanks to **Hugo Rozestraten** (hugorozestraten) that worked hard for many days and nights to make this project happen. Also, thanks to Edzon Sanchez (edzon) and Juan Mestre (juanmestre) that helped us to present this project to hundreds of people.
 
 ### How the Backend works
 
