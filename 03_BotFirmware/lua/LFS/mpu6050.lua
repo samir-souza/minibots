@@ -113,8 +113,8 @@ function MPU6050:is_initialized()
 end
 
 function MPU6050:set_slave_address(num, address)
-    if num > 3 then return
-        self:write_byte(self.I2C_SLV0_ADDR + num*3, address)
+    if num > 3 then
+        return self:write_byte(self.I2C_SLV0_ADDR + num*3, address)
     end
 end
 
@@ -851,7 +851,7 @@ function MPU6050:get_orientation(packet)
     local w = self:uint2int16(bit.bor(bit.lshift(packet[1],8), packet[2] )) / 16384.0
     local x = self:uint2int16(bit.bor(bit.lshift(packet[5],8), packet[6] )) / 16384.0
     local y = self:uint2int16(bit.bor(bit.lshift(packet[9],8), packet[10] )) / 16384.0
-    local z = self:uint2int16(bit.bor(bit.lshift(packet[13],8), packet[4] )) / 16384.0
+    local z = self:uint2int16(bit.bor(bit.lshift(packet[13],8), packet[14] )) / 16384.0
     return Quaternion(w,x,y,z)
 end
 
